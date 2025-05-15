@@ -106,7 +106,7 @@
         <section class="participants-section">
             <h2>☕ Membros do Grupo</h2>
             <div class="participants-grid" id="participantsContainer">
-                <!-- Participantes serão inseridos via JavaScript -->
+                
             </div>
         </section>
 
@@ -118,13 +118,13 @@
             </div>
             <div class="announcement">
                 <h3>Nosso gestor está aguardando uma posição do hospital</h3>
-                <p>Até lá venham tomado café.kkk!</p>
+                <p></p>
             </div>
         </section>
     </div>
 
     <script>
-        // Lista de participantes
+       
         const participants = [
             "Júlia",
             "Karla",
@@ -135,7 +135,7 @@
             "Rafa"
         ];
 
-        // Função para carregar participantes
+        
         function loadParticipants() {
             const container = document.getElementById('participantsContainer');
             participants.forEach(participant => {
@@ -149,7 +149,7 @@
             });
         }
 
-        // Efeito de máquina de escrever no slogan
+       
         function typeWriter(element, text, speed = 50) {
             let i = 0;
             function type() {
@@ -163,7 +163,7 @@
             type();
         }
 
-        // Inicialização
+        
         window.addEventListener('DOMContentLoaded', () => {
             loadParticipants();
             typeWriter(document.querySelector('.slogan'), 
