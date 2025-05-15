@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo do Café - Sabor & Conexão</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085') center/cover;
+            color: #f4e9d8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 0;
+            border-bottom: 3px solid #6f4e37;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: #6f4e37;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .participants-section {
+            margin: 4rem 0;
+            background: rgba(111, 78, 55, 0.9);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .participants-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .participant-card {
+            background: #f4e9d8;
+            color: #6f4e37;
+            padding: 1.5rem;
+            text-align: center;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .participant-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .announcements {
+            background: rgba(244, 233, 216, 0.9);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+        }
+
+        .announcement {
+            background: #6f4e37;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid #f4e9d8;
+            border-radius: 5px;
+        }
+
+        .coffee-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .logo {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="logo">☕ Grupo do Café do Hospital Gabriel Soares</h1>
+            <p class="slogan">Aos planantonistas da farmácia</p>
+        </header>
+
+        <section class="participants-section">
+            <h2>☕ Membros do Grupo</h2>
+            <div class="participants-grid" id="participantsContainer">
+                <!-- Participantes serão inseridos via JavaScript -->
+            </div>
+        </section>
+
+        <section class="announcements">
+            <h2 style="color: #6f4e37;">📢 Avisos Importantes</h2>
+            <div class="announcement">
+                <h3>Atenção:</h3>
+                <p>Infelizmente o hospital está provisoriamente sem copa e sem descanso!</p>
+            </div>
+            <div class="announcement">
+                <h3>Nosso gestor está aguardando uma posição do hospital</h3>
+                <p>Até lá venham tomado café.kkk!</p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Lista de participantes
+        const participants = [
+            "Júlia",
+            "Karla",
+            "Evelyn",
+            "Alcimar",
+            "Sodré",
+            "Patrícia",
+            "Rafa"
+        ];
+
+        // Função para carregar participantes
+        function loadParticipants() {
+            const container = document.getElementById('participantsContainer');
+            participants.forEach(participant => {
+                const card = document.createElement('div');
+                card.className = 'participant-card';
+                card.innerHTML = `
+                    <div class="coffee-icon">☕</div>
+                    <h3>${participant}</h3>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Efeito de máquina de escrever no slogan
+        function typeWriter(element, text, speed = 50) {
+            let i = 0;
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            element.innerHTML = '';
+            type();
+        }
+
+        // Inicialização
+        window.addEventListener('DOMContentLoaded', () => {
+            loadParticipants();
+            typeWriter(document.querySelector('.slogan'), 
+                      'Aos plantonistas da farmácia');
+        });
+    </script>
+</body>
+</html>
